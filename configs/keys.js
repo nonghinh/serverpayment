@@ -1,0 +1,2 @@
+var KEY_ACCESS_TOKEN = 'hinh129';
+module.exports.KEY_ACCESS_TOKEN = KEY_ACCESS_TOKEN;

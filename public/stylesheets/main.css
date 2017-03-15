@@ -1,0 +1,31 @@
+/*
+* Stylesheet frontend
+*/
+/*== CUstom style== */
+#wrapper{
+  min-height: 1000px;
+}
+.form-control{
+  border-radius: 2px;
+}
+.btn{
+  border-radius: 2px;
+}
+label.required:after{
+  content: "*";
+  color: red;
+  margin-left: 10px;
+}
+/*== / CUstom style== */
+#register .formBox{
+  margin-top: 20px;
+}
+#register .card-header{
+  background: #fff;
+}
+#register .card-header .title-header{
+  font-size: 2.2em;
+  text-transform: uppercase;
+  text-align: center;
+  color: #16a085;
+}

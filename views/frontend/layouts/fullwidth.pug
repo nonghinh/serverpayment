@@ -1,0 +1,12 @@
+doctype
+html
+  head
+    title= title
+    link(rel="stylesheet" href="/stylesheets/bootstrap.min.css")
+    link(rel="stylesheet" href="/stylesheets/main.css")
+  body
+    #wrapper
+      include ../blocks/header
+      .container-fluid
+        #content
+          block content

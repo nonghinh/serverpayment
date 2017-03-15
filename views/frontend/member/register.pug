@@ -1,0 +1,31 @@
+extends ../layouts/fullwidth
+block content
+  #register
+    .row
+      .col-sm-6.offset-sm-3
+        .formBox
+          .card
+            .card-header
+              h1.title-header Đăng ký tài khoản
+            .card-block
+              form(action="" method="POST")
+                .form-group
+                  label.required Tên đầy đủ
+                  input(type="text" name="fullname" class="form-control")
+                  - if (typeof(error) !== 'undefined'){
+                    span.error= error
+                  - }
+                .form-group
+                  label.required Email
+                  input(type="email" name="email" class="form-control")
+                .form-group
+                  label.required Số điện thoại
+                  input(type="tel" name="phonenumber" class="form-control")
+                .form-group
+                  label.required Mật khẩu
+                  input(type="password" name="password" class="form-control")
+                .form-group
+                  label.required Xác nhận lại mật khẩu
+                  input(type="password" name="confirm_password" class="form-control")
+                .form-group
+                  button(type="submit" name="btnRegister" class="btn btn-primary btn-block") Đăng ký
