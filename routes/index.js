@@ -14,6 +14,13 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/guideIntegrate', function(req, res, next){
-  res.render('frontend/guide_intergrate', {title: 'Hướng dẫn tích hợp thanh toán'})
+  var auth = null;
+  if(req.session.memberAccount){
+    auth = 'member';
+  }
+  if(req.session.partnerAccount){
+    auth = 'partner';
+  }
+  res.render('frontend/guide_intergrate', {title: 'Hướng dẫn tích hợp thanh toán', auth: auth})
 });
 module.exports = router;
