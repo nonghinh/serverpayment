@@ -1,8 +1,8 @@
 var db = {
-  host: 'localhost',
-  user: 'root',
-  password: '',
-  database: 'server_payment'
+  host: 'sql12.freemysqlhosting.net',
+  user: 'sql12168772',
+  password: 'ARD3TwiyRr',
+  database: 'sql12168772'
 }
 
 module.exports = db;

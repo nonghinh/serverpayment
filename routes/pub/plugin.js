@@ -1,4 +1,4 @@
-var socket = io.connect('http://localhost:3000');
+var socket = io.connect('https://limitless-ridge-56856.herokuapp.com');
 
 getAddon();
 var hostname = window.location.hostname;
