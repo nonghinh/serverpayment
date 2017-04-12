@@ -1,0 +1,27 @@
+extends ./layouts/fullwidth
+block content
+  #loginBox
+    .row
+      .col-sm-6.offset-sm-3
+        .card
+          .card-header
+            h1.card-title Đăng nhập
+          .card-block
+            - if(typeof(error) !== 'undefined'){
+                .alert.alert-danger
+                  - if(error == 'v'){
+                    span Vui lòng nhập đủ thông tin đăng nhập
+                  - }
+                  - if(error == 'w'){
+                    span Sai thông tin đăng nhập
+                  - }
+            - }
+            form(action="" method="POST")
+              .form-group
+                label Email
+                input(type="email" name="email" class="form-control")
+              .form-group
+                label Password
+                input(type="password" name="password" class="form-control")
+              .form-group
+                button(type="submit" name="login" class="btn btn-primary btn-block") Đăng nhập

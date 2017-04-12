@@ -1,0 +1,83 @@
+extends ../layouts/partner
+block content
+  .container-fluid
+    h1.page-header="Thông tin web "+app.name
+    .row
+      .col-sm-6
+        .card
+          .card-header
+            h5 Thông tin cơ bản
+          .list-group
+            .list-group-item
+              strong Tên:
+              span=app.name
+            .list-group-item
+              strong Địa chỉ website:
+              span=app.website
+            .list-group-item
+              strong Mặt hàng kinh doanh:
+              span=app.business_item
+            .list-group-item
+              strong Mô tả website:
+              span=app.description
+      .col-sm-6
+        .card
+          .card-header
+            h5 Mã nhúng tích hợp thông báo
+          .card-block
+            .alert.alert-warning
+              p Nhúng đoạn code bên dưới để tích hợp phần thông báo về website, có thể nhúng vào bất kỳ chỗ nào bạn muốn hiển thị thông báo trong cặp thẻ
+                code body
+            #codeBox
+              code#embedCodeScript
+            input(type="hidden" value=app.id id="idWeb")
+    .row
+      .col-sm-12
+        .card
+          .card-header
+            .row
+              .col-sm-10
+                h5 Thông báo thanh toán
+              .col-sm-2
+                - if(msgs.length > 0){
+                  a(href="/partners/deleteAllMsg/"+msgs[0].shop_id class="float-sm-right btn btn-danger" onclick="return confirmDelete()") Xóa tất cả
+                - }
+          table.table#tableMsg
+            - if(msgs.length > 0){
+            each msg in msgs
+              tr
+                td=msg.message
+                td
+                  a(href="/partners/deleteMsg/"+msg.shop_id+"/"+msg.id class="float-sm-right text-danger" onclick="return confirmDelete()")
+                    i.fa.fa-trash
+                    span Xóa
+            - }else{
+              tr
+                td
+                  alert.alert-warning Không có thông báo nào
+            - }
+
+
+
+
+block script
+  script.
+    var idWeb = $('#idWeb').val();
+    var code = "<script>";
+        code += "var x1 = document.createElement('script'),";
+            code += "x0 = document.getElementsByTagName('script')[0];";
+        code += "var pn = document.createElement('div');";
+            code += "pn.setAttribute('id', 'notifBoxNC');";
+          code += "x0.parentNode.insertBefore(pn, x0);";
+        code += "var socketNC = document.createElement('script');";
+            code += "socketNC.src = 'https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.min.js';";
+            code += " x0.parentNode.insertBefore(socketNC, x0);";
+            code += "x1.src='http://localhost:3000/plugin/"+idWeb+"/default';";
+            code += "x1.charset='UTF-8';";
+            code += "x0.parentNode.insertBefore(x1, x0);";
+        code += "var linkNC = document.createElement('link');";
+            code += "linkNC.href = 'http://localhost:3000/addon/notification.css';";
+            code += "linkNC.rel = 'stylesheet';";
+            code += "document.head.appendChild(linkNC);";
+            code+= "<"+"/script>"
+      $('#embedCodeScript').text(code);

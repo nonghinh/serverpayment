@@ -1,0 +1,52 @@
+extends ../layouts/app
+block content
+  .container
+    .row
+      .col-sm-8.offset-sm-2
+        .card
+          .card-header
+            h1 Thanh toán sản phẩm
+          .card-block
+            .row
+              .col-sm-8
+                .list-group.infoPay
+                  .list-group-item
+                    strong Tên:
+                    span=datatopay.name
+                  .list-group-item
+                    strong Email:
+                    span=datatopay.receiver
+                  .list-group-item
+                    strong Mã hàng:
+                    span=datatopay.product_id
+                  .list-group-item
+                    strong Tên sản phẩm:
+                    span=datatopay.product_name
+                  .list-group-item
+                    strong Giá:
+                    span=datatopay.price + " VNĐ"
+                  .list-group-item
+                    strong Mô tả:
+                    span=datatopay.comments
+              .col-sm-4
+                #qrcode-payment
+                - if(datatopay !== 'undefined'){
+                  input(type="hidden" id="datatopay" value=datatopay)
+                - }
+
+block script
+  script(src="/javascripts/qrcode.js")
+  script.
+    var data_payment = document.getElementById('datatopay').value;
+    var qrcode = new QRCode(document.getElementById('qrcode-payment'), {
+      width: 200,
+      height: 200,
+      colorDark : "#000000",
+      colorLight : "#ffffff",
+      correctLevel : QRCode.CorrectLevel.H
+    });
+    if(typeof(data_payment) !== 'undefined'){
+      qrcode.makeCode(data_payment);
+    }
+    console.log(data_payment);
+    document.getElementById('qrcode-payment').removeAttribute("title");

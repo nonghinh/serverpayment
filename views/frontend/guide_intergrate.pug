@@ -1,0 +1,44 @@
+extends ./layouts/fullwidth
+block content
+  .container
+    .page-header
+      h1 Hướng dẫn tích hợp thương mại điện tử
+    .row
+      .col-sm-12
+        h3 1. Giới thiệu
+        p Tích hợp cổng thanh toán Ngân lượng theo hình thức nút thanh toán nhanh là hình thức nhúng nút thánh toán có sẵn của Ngân lượng vào website/forum của người bán, người dùng chọn thanh toán thì chuyển sang ngân lượng để tiến hành thanh toán
+        h3 2. Hướng dẫn
+        .row
+          .col-sm-12
+            form(action="" id="formBtnPay")
+              .form-group
+                input(type="radio" name="btnPay" class="optionBtnPay" checked value="/addon/img/btn-pay.png")
+                img(src="/addon/img/btn-pay.png" width="150")
+              .form-group
+                button(type="button" name="getEmbed" id="getEmbed" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#embedCode") Lấy mã nhúng
+
+        div(class="modal fade" id="embedCode" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true")
+          div(class="modal-dialog modal-lg" role="document")
+            .modal-content
+              .modal-header
+                h5.modal-title Lấy mã nhúng nút thanh toán tùy biến vào Forum, Blog, Website
+                button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+                  span(aria-hidden="true") &times;
+              .modal-body
+                p Chỉnh sửa các tham số trong đoạn mã dưới đây rồi Copy và chèn vào vị trí mong muốn bên cạnh thông tin sản phẩm trong tin bán hàng tại Forum, Blog hoặc Website rao vặt để hiện nút thanh toán.
+                .jumbotron
+                  code#codeBtnPay
+
+block script
+  script.
+    $('#getEmbed').click(function(){
+      var siteURL = window.location.protocol+'//'+window.location.hostname+':'+window.location.port;
+      var img = $('input[name=btnPay]:checked', '#formBtnPay').val();
+      var urlImg = siteURL+img;
+      var code = '<a href="'+siteURL+'/payment/getcode/receiver=(Email chính tài khoản nhận tiền)&website=(địa chỉ website của bạn)>';
+          code += '&product_id=(Mã sản phẩm)&product_name=(Tên sản phẩm)&price=(tổng giá cả)';
+          code += '&comments=(Ghi chú về đơn hàng)">';
+          code += '<img src="'+ urlImg +'" width="125" />';
+          code += '</a>';
+    $('#codeBtnPay').text(code);
+    });

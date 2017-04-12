@@ -1,0 +1,43 @@
+extends ../layouts/fullwidth
+block content
+  #register
+    .row
+      .col-sm-6.offset-sm-3
+        .formBox
+          .card
+            .card-header
+              h1.title-header Đăng ký API thanh toán trực tuyến
+            .card-block
+              - if(typeof(error) !== 'undefined'){
+              .alert.alert-danger
+                - if(error == 'v'){
+                    span= 'Vui lòng nhập đủ thông tin'
+                - }
+                - if(error == 'p'){
+                    span= 'Xác nhận sai mật khẩu'
+                - }
+                - if(error == 'ph'){
+                    span= 'Số điện thoại đã được sử dụng trước đó'
+                - }
+                - if(error == 'e'){
+                    span= 'Email đã tồn tại'
+                - }
+              - }
+              form(action="" method="POST")
+                .form-group
+                  label Tên doanh nghiệp
+                  input(type="text" name="name" class="form-control")
+                .form-group
+                  label Email
+                  input(type="email" name="email" class="form-control")
+                .form-group
+                  label Số điện thoại
+                  input(type="tel" name="phone" class="form-control")
+                .form-group
+                  label Mật khẩu
+                  input(type="password" name="password" class="form-control")
+                .form-group
+                  label Nhập lại mật khẩu
+                  input(type="password" name="repassword" class="form-control")
+                .form-group
+                  button(type="submit" name="registerPartner" class="btn btn-primary btn-block") Đăng ký

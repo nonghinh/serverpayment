@@ -1,0 +1,34 @@
+extends ../layouts/partner
+block content
+  .container
+    .page-header
+      h1.text-center Các website đã tích hợp
+    - if(apps && apps != null){
+      table.table
+        tr
+          th #
+          th Tên
+          th Website
+          th Mặt hàng kinh doanh
+          th(colspan="3") Thao tác
+        - var i = 0;
+        each app in apps
+          tr
+            td=++i
+            td=app.name
+            td=app.website
+            td=app.business_item
+            td
+              a(href="/partners/app/"+app.id+"/view" class="text-success")
+                i.fa.fa-eye Xem
+            td
+              a(href="")
+                i.fa.fa-pencil Sửa
+            td
+              a(href="" class="text-danger")
+                i.fa.fa-trash Xóa
+    - }else{
+      .alert.alert-warning
+        span Không có trang web nào được tạo
+    - }
+      a(href="/partners/createApp" class="btn btn-info") Thêm website

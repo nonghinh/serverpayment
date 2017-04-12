@@ -1,3 +1,24 @@
 #header
-  nav.navbar.navbar-light.bg-faded
+  nav.navbar.navbar-toggleable-sm.navbar-light.bg-faded
+    button(class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" )
+      span.navbar-toggler-icon
     a.navbar-brand Mysite
+    .collapse.navbar-collapse#navbarNav
+      ul.nav.navbar-nav.mr-0.ml-lg-auto
+        li.nav-item.dropdown
+          a(class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown") Người bán TMĐT
+          div(class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink")
+            a(class="dropdown-item" href="#") Giới thiệu dịch vụ
+            a(class="dropdown-item" href="/guideIntegrate") Hướng dẫn tích hợp
+        - if(auth && auth == 'member'){
+            li.nav-item
+              a(class="nav-link" href="/members/dashboard") Dashboard
+            li.nav-item
+              a(class="nav-link" href="/members/logut") Đăng xuất
+        - }
+        - if(auth && auth == 'partner'){
+            li.nav-item
+              a(class="nav-link" href="/partners/dashboard") Dashboard
+            li.nav-item
+              a(class="nav-link" href="/partners/logout") Đăng xuất
+        - }

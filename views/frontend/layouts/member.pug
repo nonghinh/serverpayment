@@ -1,0 +1,19 @@
+doctype
+html
+  head
+    title= title
+    link(rel="stylesheet" href="/stylesheets/bootstrap.min.css")
+    link(rel="stylesheet" href="/stylesheets/font-awesome.min.css")
+    link(rel="stylesheet" href="/stylesheets/main.css")
+  body
+    #wrapper
+      include ../blocks/menu_member
+      .container-fluid
+        #content
+          block content
+
+    script(src="/javascripts/jquery-3.1.1.slim.min.js")
+    script(src="/javascripts/tether.min.js")
+    script(src="/javascripts/bootstrap.min.js")
+    script(src="/javascripts/custom.js")
+    block script

@@ -1,0 +1,33 @@
+extends ../layouts/partner
+block content
+  #loginBox
+    .row
+      .col-sm-6.offset-sm-3
+        .card
+          .card-header
+            h1.card-title Thêm website
+          .card-block
+            - if(typeof(error) !== 'undefined'){
+                .alert.alert-danger
+                  - if(error == 'validate'){
+                    span Vui lòng nhập đủ thông tin đăng nhập
+                  - }
+            - }
+            form(action="" method="POST")
+              .form-group
+                label Tên ứng dụng
+                input(type="text" name="name" class="form-control")
+              .form-group
+                label Website
+                input(type="text" name="website" class="form-control")
+              .form-group
+                label Địa chỉ
+                textarea(name="address" class="form-control")
+              .form-group
+                label Mặt hàng
+                input(type="text" name="item" class="form-control")
+              .form-group
+                label Mô tả website
+                textarea(name="description" class="form-control")
+              .form-group
+                button(type="submit" name="createApp" class="btn btn-primary btn-block") Tạo
