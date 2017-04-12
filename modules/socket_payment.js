@@ -88,17 +88,17 @@ exports = module.exports = function(io){
             conn.query('UPDATE members SET money = ? WHERE id = ?', [money, rows[0].id]);
             //
 
-            // nexmo.message.sendSms(
-            //   '84975117407', '84986616031', 'Đã thanh toán thành công', {type: 'unicode'},
-            //     (err, responseData) => {
-            //       if (err) {
-            //         console.log(err);
-            //       } else {
-            //         console.dir(responseData);
-            //       }
-            //     }
-            //  );
-            //
+            nexmo.message.sendSms(
+              '84975117407', '84986616031', 'Đã thanh toán thành công', {type: 'unicode'},
+                (err, responseData) => {
+                  if (err) {
+                    console.log(err);
+                  } else {
+                    console.dir(responseData);
+                  }
+                }
+             );
+
             console.log('===ACCEPTED====');
             var notifData = {
               shop_id: product_info.shop_id,
@@ -122,16 +122,16 @@ exports = module.exports = function(io){
 
           }
           else{
-            // nexmo.message.sendSms(
-            //   '84975117407', '84986616031', 'Thanh toán thất bại, tài khoản hết tiền', {type: 'unicode'},
-            //     (err, responseData) => {
-            //       if (err) {
-            //         console.log(err);
-            //       } else {
-            //         console.dir(responseData);
-            //       }
-            //     }
-            //  );
+            nexmo.message.sendSms(
+              '84975117407', '84986616031', 'Thanh toán thất bại, tài khoản hết tiền', {type: 'unicode'},
+                (err, responseData) => {
+                  if (err) {
+                    console.log(err);
+                  } else {
+                    console.dir(responseData);
+                  }
+                }
+             );
 
             console.log('===PAY FAIL====');
             var notifData = {
