@@ -78,7 +78,7 @@ exports = module.exports = function(io){
         if(err) throw err;
         var phonenum = rows[0].phone;
         if(phonenum.indexOf('0') == 0){
-          phonenum = phonenum.replace('0', '+84');
+          phonenum = phonenum.replace('0', '84');
         }
         if(rows.length > 0){
           console.log(rows[0].money);
@@ -89,7 +89,7 @@ exports = module.exports = function(io){
             //
 
             nexmo.message.sendSms(
-              '84975117407', '84986616031', 'Đã thanh toán thành công', {type: 'unicode'},
+              '84975117407', phonenum, 'Đã thanh toán thành công', {type: 'unicode'},
                 (err, responseData) => {
                   if (err) {
                     console.log(err);
@@ -123,7 +123,7 @@ exports = module.exports = function(io){
           }
           else{
             nexmo.message.sendSms(
-              '84975117407', '84986616031', 'Thanh toán thất bại, tài khoản hết tiền', {type: 'unicode'},
+              '84975117407', phonenum, 'Thanh toán thất bại, tài khoản hết tiền', {type: 'unicode'},
                 (err, responseData) => {
                   if (err) {
                     console.log(err);
