@@ -10,12 +10,12 @@ socket.on('socketid', function(id){
   if(typeof(Storage) !== 'undefined'){
     sessionStorage.setItem('socketid', id);
     socketid.push(id);
-    console.log(sessionStorage.socketid);
     socket.emit('notification', id);
   }
 });
 
 socket.on('notifData', function(msg, count){
+  console.log(count);
   document.getElementById('notifNumber').innerHTML = count;
   if(count == 0){
     document.getElementById('notifNumber').style.display = 'none';
@@ -88,11 +88,11 @@ function getAddon(){
         console.log(typeof(this.responseText));
       }
       else {
-        alert(this.status);
+        //alert(this.status);
       }
     }
   }
-  xhr.open("GET", "http://localhost:3000/plugin/addon", true);
+  xhr.open("GET", "https://limitless-ridge-56856.herokuapp.com/plugin/addon", true);
   xhr.send();
 
 }

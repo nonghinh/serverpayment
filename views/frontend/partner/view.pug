@@ -64,7 +64,7 @@ block script
   script.
     var idWeb = $('#idWeb').val();
     var code = "<script>";
-        code += "var x1 = document.createElement('script'),";
+        code += "var x1 = document.createElement('script');";
             code += "x0 = document.getElementsByTagName('script')[0];";
         code += "var pn = document.createElement('div');";
             code += "pn.setAttribute('id', 'notifBoxNC');";
@@ -72,7 +72,7 @@ block script
         code += "var socketNC = document.createElement('script');";
             code += "socketNC.src = 'https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.min.js';";
             code += " x0.parentNode.insertBefore(socketNC, x0);";
-            code += "x1.src='http://localhost:3000/plugin/"+idWeb+"/default';";
+            code += "x1.src='https://limitless-ridge-56856.herokuapp.com/plugin/"+idWeb+"/default';";
             code += "x1.charset='UTF-8';";
             code += "x0.parentNode.insertBefore(x1, x0);";
         code += "var linkNC = document.createElement('link');";
