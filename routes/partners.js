@@ -187,6 +187,12 @@ router.get('/logout', function(req, res, next){
   res.redirect('/');
 });
 
+router.get('deleteApp/:id', function(req, res, next){
+  conn.query('DELETE FROM shops WHERE ?', {id: req.params.id}, function(err){
+    if(err) throw err;
+    res.redirect('back');
+  });
+});
 
 //Kiem tra session
 function authChecker(req, res, next){
