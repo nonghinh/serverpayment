@@ -35,7 +35,7 @@ block script
       var siteURL = window.location.protocol+'//'+window.location.hostname;
       var img = $('input[name=btnPay]:checked', '#formBtnPay').val();
       var urlImg = siteURL+img;
-      var code = '<a href="'+siteURL+'/payment/getcode/receiver=(Email chính tài khoản nhận tiền)&website=(địa chỉ website của bạn)>';
+      var code = '<a href="'+siteURL+'/payment/getcode?receiver=(Email chính tài khoản nhận tiền)&website=(địa chỉ website của bạn)>';
           code += '&product_id=(Mã sản phẩm)&product_name=(Tên sản phẩm)&price=(tổng giá cả)';
           code += '&comments=(Ghi chú về đơn hàng)">';
           code += '<img src="'+ urlImg +'" width="125" />';
